@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>{{ siteName }}</title>
+	<link rel="stylesheet" href="assets/c/style.css">
+	<link href="//cloud.webtype.com/css/6e73715c-096b-45fb-b313-901f8c344364.css" rel="stylesheet" type="text/css" />
+	<script type="text/javascript" src="//use.typekit.net/fxy3oae.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+</head>
+
+<body>
+	<header><h3 class="penna">{{ homepage.opening }}</h3></header>
+	<div class="mainleft">
+		<section id="title">
+			<figure>
+				<img src="assets/i/az1.png" alt="Allison and Zach">
+			</figure>
+			<h1>{{ siteName }}</h1>
+		</section>
+		<section id="schedule">
+			<h2>Schedule</h2>
+				<ul>
+				{% for event in schedule.schedule %}
+				<li>
+				   	<h3>{{ event.name }} <br><span class="date">{{ event.date }} - {{ event.time }}</span><br>
+				    <address>{{ event.address }}</address></h3>
+				    <p class="eventdetails">{{ event.details }}</p>
+				</li>
+				{% endfor %}
+				</ul>
+		</section>
+		<section id="activities">
+			<h2>Activities</h2>	
+			<ul id="activities">
+			{% for activity in activities.activities %}
+			    <li>
+			    	<h4><a href="{{ store.url }}">{{ activity.name }}</a></h4>
+			    	<p class="registrydetails">{{ activity.description }}</p>
+			    	<address>{{ activity.address }}</address>
+			    	<p class="phone">{{ activity.phone }}</p>
+			    </li>
+			{% endfor %}
+			</ul>
+		</section>
+		
+	</div>
+	<div class="mainright">
+		<section id="hotels">
+			<h2>Accommodations</h2>
+			<p>We have reserved blocks of rooms under the name "Baker/Phillips" (important: not Phillips/Baker) at each of the following other than the Hyatt House.</p>
+				<ul id="hotels">
+					{% for hotel in accommodations.hotels %}
+					    <li>
+					    	<h4><a href="{{ hotel.url }}">{{ hotel.name }}</a></h4>
+					    	<address>{{ hotel.address | raw }} - <a href="tel:{{ hotel.phone }}">{{ hotel.phone }}</a></address>
+					    </li>
+					{% endfor %}
+				</ul>
+		</section>
+		
+		<section id="registry">
+			<h2>Registry</h2>	
+			<ul id="registry">
+			{% for store in registry.registry %}
+			    <li>
+			    	<h4><a href="{{ store.url }}">{{ store.store }}</a></h4>
+			    	<p class="registrydetails">{{ store.description }}</p>
+			    </li>
+			{% endfor %}
+			</ul>
+		</section>
+		<section id="contact">
+			<h2>Get in Touch</h2>
+			{{ contact.body }}
+			
+			<form method="post" action="" accept-charset="UTF-8">
+    <input type="hidden" name="action" value="contactform/sendMessage">
+
+    <h4><label for="fromEmail">From Email</label></h4>
+    <input id="fromEmail" type="text" name="fromEmail">
+
+    <h4><label for="fromName">From Name</label></h4>
+    <input id="fromName" type="text" name="fromName">
+
+    <h4><label for="subject">Subject</label></h4>
+    <input id="subject" type="text" name="subject">
+
+    <h4><label for="message">Message</label></h4>
+    <textarea rows="10" cols="40" id="message" name="message"></textarea>
+
+    <h4><input type="submit" value="Submit"></h4>
+</form>
+		</section>
+	</div>
+
+</body>
+</html>
