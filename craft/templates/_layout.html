@@ -47,6 +47,17 @@
 		
 	</div>
 	<div class="mainright">
+		<section id="directions">
+			<h2>Directions</h2>
+				<ul id="hotels">
+					{% for way in directions.ways %}
+					    <li>
+					    	<h4><a href="{{ way.url }}">{{ way.name }}</a></h4>
+					    	<address>{{ way.address | raw }} - <a href="tel:{{ way.phone }}">{{ way.phone }}</a></address>
+					    </li>
+					{% endfor %}
+				</ul>
+		</section>
 		<section id="hotels">
 			<h2>Accommodations</h2>
 			<p>We have reserved blocks of rooms under the name "Baker/Phillips" (important: not Phillips/Baker) at each of the following other than the Hyatt House.</p>
